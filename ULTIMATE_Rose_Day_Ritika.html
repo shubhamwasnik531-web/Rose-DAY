@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day Ritika</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+margin:0;
+overflow:hidden;
+font-family:'Comic Sans MS', cursive;
+background:radial-gradient(circle at top,#ffe6ee,#ffb6c1,#ff8fab);
+text-align:center;
+color:#8b0033;
+}
+.center{
+position:relative;
+z-index:2;
+margin-top:70px;
+}
+h1{
+font-size:48px;
+margin-bottom:10px;
+}
+p{
+font-size:20px;
+max-width:90%;
+margin:10px auto;
+}
+.card{
+background:rgba(255,255,255,0.8);
+border-radius:22px;
+padding:26px;
+margin:14px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+.hidden{
+opacity:0;
+transform:translateY(10px);
+transition:all 1.4s ease;
+}
+.show{
+opacity:1;
+transform:translateY(0);
+}
+.rose,.heart,.sparkle{
+position:fixed;
+top:-60px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+.rose{font-size:34px}
+.heart{font-size:26px}
+.sparkle{font-size:18px}
+@keyframes fall{
+0%{transform:translateY(0) rotate(0deg);opacity:1}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+.footer{
+font-size:14px;
+opacity:.8;
+}
+button{
+border:none;
+border-radius:999px;
+padding:14px 22px;
+font-size:18px;
+background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+color:#fff;
+box-shadow:0 8px 18px rgba(0,0,0,.2);
+cursor:pointer;
+}
+button:active{transform:scale(.98)}
+</style>
+</head>
+<body>
+
+<div class="center">
+  <div class="card">
+    <h1>🌹 Happy Rose Day Ritika 🌹</h1>
+    <p>You are my forever rose 💖</p>
+    <button onclick="reveal()">Tap for magic ✨</button>
+  </div>
+
+  <div id="m1" class="card hidden">
+    <p>
+      Just like roses make the world beautiful,<br>
+      your smile makes my life bloom 🌸
+    </p>
+  </div>
+
+  <div id="m2" class="card hidden">
+    <p>
+      Every petal reminds me of you —<br>
+      soft, pure, and full of love 💕
+    </p>
+  </div>
+
+  <div id="m3" class="card hidden">
+    <p>
+      If love had a name,<br>
+      it would be <b>Ritika</b> 😘
+    </p>
+  </div>
+
+  <div id="m4" class="card hidden">
+    <p>
+      Today is Rose Day,<br>
+      but for me… every day is <b>Ritika Day</b> 🌹
+    </p>
+  </div>
+
+  <div id="m5" class="card hidden">
+    <p>
+      Will you be my forever…<br>
+      my love, my rose, my home? 💍💖
+    </p>
+  </div>
+
+  <p class="footer">Made with endless love 💘</p>
+</div>
+
+<audio id="bgm" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_3b0c1a5c7b.mp3?filename=romantic-ambient-112191.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Falling elements
+function rain(cls, emoji, count, minDur, maxDur){
+  for(let i=0;i<count;i++){
+    const d=document.createElement("div");
+    d.className=cls;
+    d.innerHTML=emoji;
+    d.style.left=Math.random()*100+"vw";
+    d.style.animationDuration=(minDur+Math.random()*(maxDur-minDur))+"s";
+    document.body.appendChild(d);
+  }
+}
+rain("rose","🌹",40,4,9);
+rain("heart","💖",26,5,10);
+rain("sparkle","✨",30,6,12);
+
+// Reveal sequence + music
+let revealed=false;
+function reveal(){
+  if(revealed) return;
+  revealed=true;
+  const a=document.getElementById("bgm");
+  a.volume=0.7;
+  a.play().catch(()=>{});
+  const ids=["m1","m2","m3","m4","m5"];
+  ids.forEach((id,i)=>{
+    setTimeout(()=>{
+      document.getElementById(id).classList.add("show");
+    }, (i+1)*1400);
+  });
+}
+</script>
+
+</body>
+</html>
